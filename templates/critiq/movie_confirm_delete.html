@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete {{ movie.title }} | Critiq
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card border-danger shadow">
+          <div class="card-header bg-danger text-white">
+            <h2 class="h4 mb-0">Delete Movie</h2>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title mb-4">Are you sure you want to delete "{{ movie.title }}"?</h3>
+
+            <div class="alert alert-warning">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              This action cannot be undone. All reviews associated with this movie will also be deleted.
+            </div>
+
+            <div class="row mb-4">
+              <div class="col-md-4">
+                {% if movie.poster %}
+                  <img src="{{ movie.poster.url }}" class="img-fluid rounded" alt="{{ movie.title }}" />
+                {% else %}
+                  <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 150px;">
+                    <i class="bi bi-film" style="font-size: 3rem; color: #ccc;"></i>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="col-md-8">
+                <p>
+                  <strong>Title:</strong> {{ movie.title }}
+                </p>
+                <p>
+                  <strong>Release Year:</strong> {{ movie.release_year }}
+                </p>
+                <p>
+                  <strong>Director:</strong> {{ movie.director }}
+                </p>
+                <p>
+                  <strong>Reviews:</strong> {{ movie.reviews.count }}
+                </p>
+              </div>
+            </div>
+
+            <form method="post">
+              {% csrf_token %}
+              <div class="d-flex justify-content-between">
+                <a href="{% url 'critiq:movie_detail' slug=movie.slug %}" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete Movie</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

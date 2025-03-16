@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  My Reviews | Critiq
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h1 class="mb-3">My Reviews</h1>
+      </div>
+    </div>
+
+    {% if reviews %}
+      <div class="row">
+        <div class="col-md-12">
+          {% for review in reviews %}
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="badge bg-primary rounded-pill me-2"><i class="bi bi-star-fill me-1"></i> {{ review.rating }}/10</span>
+                  <span class="fw-bold">{{ review.title }}</span>
+                </div>
+                <small class="text-muted">{{ review.created_at|date:'F j, Y' }}</small>
+              </div>
+              <div class="card-body">
+                <div class="d-flex mb-3">
+                  {% if review.movie.poster %}
+                    <img src="{{ review.movie.poster.url }}" alt="{{ review.movie.title }}" class="img-thumbnail me-3" style="max-height: 100px; max-width: 70px;" />
+                  {% else %}
+                    <div class="bg-light d-flex align-items-center justify-content-center me-3 rounded" style="height: 100px; width: 70px;">
+                      <i class="bi bi-film" style="font-size: 2rem; color: #ccc;"></i>
+                    </div>
+                  {% endif %}
+                  <div>
+                    <h5 class="mb-1">{{ review.movie.title }} <span class="text-muted">({{ review.movie.release_year }})</span></h5>
+                    <p class="text-muted mb-0">Directed by {{ review.movie.director }}</p>
+                  </div>
+                </div>
+
+                <p class="card-text">{{ review.content|truncatewords:50 }}</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <a href="{% url 'critiq:review_detail' slug=review.slug %}" class="btn btn-sm btn-outline-primary">Read Full Review</a>
+                  <div>
+                    <a href="{% url 'critiq:review_update' slug=review.slug %}" class="btn btn-sm btn-outline-secondary me-1">Edit</a>
+                    <a href="{% url 'critiq:review_delete' slug=review.slug %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      {% if is_paginated %}
+        <nav aria-label="Page navigation" class="mt-4">
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+              </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <li class="page-item active">
+                  <a class="page-link" href="#">{{ num }}</a>
+                </li>
+              {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="alert alert-info">
+        You haven't written any reviews yet.
+        <a href="{% url 'critiq:movie_list' %}">Browse movies</a> to start reviewing!
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

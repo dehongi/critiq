@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Frequently Asked Questions | Critiq
+{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h1 class="mb-4">Frequently Asked Questions</h1>
+        <p class="lead">Find answers to the most common questions about using Critiq.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="accordion" id="faqAccordion">
+          <!-- General Questions -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What is Critiq?</button></h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>Critiq is a platform where movie enthusiasts can share their opinions on films through reviews and ratings. Users can browse movies, read reviews from other users, and contribute their own thoughts on the films they've watched.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Do I need an account to use Critiq?</button></h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>You can browse movies and read reviews without an account. However, to write reviews, rate movies, or add new movies to the database, you'll need to create a free account.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Questions -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How do I create an account?</button></h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>To create an account, click on the "Sign Up" button in the top right corner of the page. You'll need to provide a valid email address and create a password. After registering, you'll receive a verification email to confirm your account.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">I forgot my password. How can I reset it?</button></h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>If you've forgotten your password, click on the "Log In" button and then select "Forgot Password?" on the login page. Enter your email address, and we'll send you instructions to reset your password.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Movies & Reviews Questions -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How do I add a new movie?</button></h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>To add a new movie, log in to your account, navigate to the Movies page, and click the "Add Movie" button. Fill out the required information about the movie, including title, release year, director, and synopsis. You can also upload a poster image for the movie.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">How do I write a review?</button></h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>To write a review, first find the movie you want to review by browsing or searching. On the movie's detail page, scroll down to the review section and click "Write a Review." You'll need to provide a title for your review, a rating (1-10), and your written review content.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Can I edit or delete my reviews?</button></h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>Yes, you can edit or delete your own reviews at any time. To do so, navigate to the review and look for the edit or delete buttons. You can also manage all your reviews from your "My Reviews" page accessible from the Reviews dropdown in the navigation menu.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Questions -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">What file types are supported for movie posters?</button></h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>We support JPEG, PNG, and GIF file formats for movie posters. The recommended image size is 500x750 pixels. The maximum file size allowed is 5MB.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">Is my personal information secure?</button></h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p>
+                  Yes, we take data security seriously. We use industry-standard encryption to protect your personal information. We never share your data with third parties without your consent. For more details, please review our <a href="{% url 'website:privacy' %}">Privacy Policy</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <p>Can't find what you're looking for?</p>
+        <a href="{% url 'website:help' %}" class="btn btn-primary me-2">Visit Help Center</a>
+        <a href="{% url 'website:contact' %}" class="btn btn-outline-primary">Contact Us</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

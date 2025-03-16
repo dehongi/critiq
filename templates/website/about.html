@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  About Critiq - Our Story
+{% endblock %}
+
+{% block content %}
+  <div class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="mb-4">About Critiq</h1>
+
+      <div class="mb-5">
+        <h2>Our Story</h2>
+        <p>Critiq was founded in 2023 by a group of passionate movie enthusiasts who wanted to create a platform where people could share their honest opinions about films and discover new movies based on authentic reviews.</p>
+        <p>What started as a small project has grown into a vibrant community of movie lovers from around the world, all united by their passion for cinema and storytelling.</p>
+      </div>
+
+      <div class="mb-5">
+        <h2>Our Mission</h2>
+        <p>At Critiq, our mission is to create a space where movie enthusiasts can:</p>
+        <ul>
+          <li>Share their honest opinions about films they've watched</li>
+          <li>Discover new movies based on authentic reviews from real people</li>
+          <li>Connect with others who share their taste in cinema</li>
+          <li>Engage in meaningful discussions about the art of filmmaking</li>
+        </ul>
+        <p>We believe that everyone's opinion matters and that the best movie recommendations come from people who share your taste in films.</p>
+      </div>
+
+      <div class="mb-5">
+        <h2>Our Team</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;" alt="Team Member" />
+              <div class="card-body">
+                <h5 class="card-title">Jane Doe</h5>
+                <p class="card-text text-muted">Founder & CEO</p>
+                <p class="card-text">Film critic and technology enthusiast with a passion for storytelling.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;" alt="Team Member" />
+              <div class="card-body">
+                <h5 class="card-title">John Smith</h5>
+                <p class="card-text text-muted">CTO</p>
+                <p class="card-text">Software engineer and cinephile with a love for classic films.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;" alt="Team Member" />
+              <div class="card-body">
+                <h5 class="card-title">Emily Johnson</h5>
+                <p class="card-text text-muted">Head of Content</p>
+                <p class="card-text">Former film journalist with a keen eye for emerging talent and trends.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <h2>Join Us</h2>
+        <p>Whether you're a casual moviegoer or a dedicated cinephile, we invite you to join our community and share your perspective on the films you love (or hate).</p>
+        <p>Your voice matters, and we can't wait to hear what you have to say!</p>
+        <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Sign Up Now</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

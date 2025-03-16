@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ review.title }} | Review of {{ review.movie.title }} | Critiq
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'critiq:movie_list' %}">Movies</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'critiq:movie_detail' slug=review.movie.slug %}">{{ review.movie.title }}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Review</li>
+          </ol>
+        </nav>
+
+        <div class="card shadow mb-4">
+          <div class="card-header bg-primary text-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="h4 mb-0">{{ review.title }}</h2>
+              <span class="badge bg-light text-primary rounded-pill fs-6"><i class="bi bi-star-fill me-1"></i> {{ review.rating }}/10</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <div class="d-flex align-items-center mb-3">
+                {% if review.movie.poster %}
+                  <img src="{{ review.movie.poster.url }}" alt="{{ review.movie.title }}" class="img-thumbnail me-3" style="max-height: 100px; max-width: 70px;" />
+                {% else %}
+                  <div class="bg-light d-flex align-items-center justify-content-center me-3 rounded" style="height: 100px; width: 70px;">
+                    <i class="bi bi-film" style="font-size: 2rem; color: #ccc;"></i>
+                  </div>
+                {% endif %}
+                <div>
+                  <h5 class="mb-1">{{ review.movie.title }} <span class="text-muted">({{ review.movie.release_year }})</span></h5>
+                  <p class="text-muted mb-0">Directed by {{ review.movie.director }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <p class="lead">{{ review.content }}</p>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="text-muted small">
+                <p class="mb-0">Reviewed by {{ review.user.email }}</p>
+                <p class="mb-0">{{ review.created_at|date:'F j, Y' }}</p>
+                {% if review.created_at != review.updated_at %}
+                  <p class="mb-0">Updated on {{ review.updated_at|date:'F j, Y' }}</p>
+                {% endif %}
+              </div>
+
+              {% if user == review.user %}
+                <div>
+                  <a href="{% url 'critiq:review_update' slug=review.slug %}" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil me-1"></i> Edit</a>
+                  <a href="{% url 'critiq:review_delete' slug=review.slug %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash me-1"></i> Delete</a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="{% url 'critiq:movie_detail' slug=review.movie.slug %}" class="btn btn-outline-primary"><i class="bi bi-arrow-left me-1"></i> Back to Movie</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

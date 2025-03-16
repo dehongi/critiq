@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Help Center | Critiq
+{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <div class="row mb-5">
+      <div class="col-md-12 text-center">
+        <h1 class="mb-3">Help Center</h1>
+        <p class="lead">Find guides and resources to help you get the most out of Critiq.</p>
+      </div>
+    </div>
+
+    <!-- Help Categories -->
+    <div class="row mb-5">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center py-4">
+            <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+            <h3 class="card-title">Account Help</h3>
+            <p class="card-text">Registration, login, profile management, and account settings.</p>
+            <a href="#account" class="btn btn-outline-primary mt-2">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center py-4">
+            <i class="bi bi-film fs-1 text-primary mb-3"></i>
+            <h3 class="card-title">Movies & Reviews</h3>
+            <p class="card-text">Adding movies, writing reviews, and rating films.</p>
+            <a href="#movies" class="btn btn-outline-primary mt-2">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center py-4">
+            <i class="bi bi-gear fs-1 text-primary mb-3"></i>
+            <h3 class="card-title">Technical Support</h3>
+            <p class="card-text">Troubleshooting, browser compatibility, and technical issues.</p>
+            <a href="#technical" class="btn btn-outline-primary mt-2">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Help Section -->
+    <div id="account" class="row mb-5">
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">Account Help</h2>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="h5">How to Create an Account</h3>
+              <ol>
+                <li>Click on the "Sign Up" button in the top-right corner of any page.</li>
+                <li>Enter your email address and create a password.</li>
+                <li>Check your email for a verification link and click it to activate your account.</li>
+                <li>Complete your profile information (optional).</li>
+              </ol>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Managing Your Profile</h3>
+              <p>To update your profile information:</p>
+              <ol>
+                <li>Log in to your account.</li>
+                <li>Click on your username in the top-right corner.</li>
+                <li>Select "Profile" from the dropdown menu.</li>
+                <li>Click "Edit Profile" to make changes.</li>
+              </ol>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Password Recovery</h3>
+              <p>If you've forgotten your password:</p>
+              <ol>
+                <li>Click "Log In" in the top-right corner.</li>
+                <li>Select "Forgot Password?" below the login form.</li>
+                <li>Enter your email address and submit the form.</li>
+                <li>Check your email for password reset instructions.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 class="h5">Account Security</h3>
+              <p>We recommend the following security practices:</p>
+              <ul>
+                <li>Use a strong, unique password for your Critiq account.</li>
+                <li>Never share your login credentials with others.</li>
+                <li>Log out when using shared or public computers.</li>
+                <li>Update your password regularly.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movies & Reviews Section -->
+    <div id="movies" class="row mb-5">
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">Movies & Reviews</h2>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="h5">Adding a New Movie</h3>
+              <ol>
+                <li>Log in to your account.</li>
+                <li>Navigate to the Movies page.</li>
+                <li>Click the "Add Movie" button.</li>
+                <li>Fill out the movie details form with title, release year, director, and synopsis.</li>
+                <li>Upload a poster image (optional).</li>
+                <li>Click "Add Movie" to submit.</li>
+              </ol>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Writing a Review</h3>
+              <ol>
+                <li>Find the movie you want to review.</li>
+                <li>On the movie's detail page, scroll to the review section.</li>
+                <li>Click "Write a Review" (or use the review form if available).</li>
+                <li>Enter a title for your review.</li>
+                <li>Select a rating from 1 to 10.</li>
+                <li>Write your review in the content field.</li>
+                <li>Click "Submit Review" to publish.</li>
+              </ol>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Managing Your Reviews</h3>
+              <p>To edit or delete your reviews:</p>
+              <ol>
+                <li>Go to "My Reviews" from the Reviews dropdown in the navigation menu.</li>
+                <li>Find the review you want to manage.</li>
+                <li>Click "Edit" to modify the review or "Delete" to remove it.</li>
+                <li>If editing, make your changes and click "Update Review" to save.</li>
+                <li>If deleting, confirm your decision on the confirmation page.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 class="h5">Review Guidelines</h3>
+              <p>When writing reviews, please follow these guidelines:</p>
+              <ul>
+                <li>Be respectful and constructive in your criticism.</li>
+                <li>Avoid spoilers or use spoiler warnings.</li>
+                <li>Don't include offensive language or personal attacks.</li>
+                <li>Focus on your experience with the film and explain your rating.</li>
+                <li>Reviews that violate our community guidelines may be removed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Support Section -->
+    <div id="technical" class="row mb-5">
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">Technical Support</h2>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <h3 class="h5">Supported Browsers</h3>
+              <p>Critiq works best with the following browsers:</p>
+              <ul>
+                <li>Google Chrome (latest version)</li>
+                <li>Mozilla Firefox (latest version)</li>
+                <li>Safari (latest version)</li>
+                <li>Microsoft Edge (latest version)</li>
+              </ul>
+              <p>For the best experience, please ensure your browser is updated to the latest version.</p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Image Upload Issues</h3>
+              <p>If you're having trouble uploading movie posters:</p>
+              <ul>
+                <li>Ensure the file is in JPEG, PNG, or GIF format.</li>
+                <li>Check that the file size is under 5MB.</li>
+                <li>Try resizing the image to 500x750 pixels.</li>
+                <li>Clear your browser cache and try again.</li>
+              </ul>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="h5">Page Loading Problems</h3>
+              <p>If pages are loading slowly or not at all:</p>
+              <ol>
+                <li>Check your internet connection.</li>
+                <li>Clear your browser cache and cookies.</li>
+                <li>Disable browser extensions that might interfere.</li>
+                <li>Try using a different browser.</li>
+                <li>If the problem persists, contact our support team.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 class="h5">Reporting Bugs</h3>
+              <p>If you encounter a bug or technical issue:</p>
+              <ol>
+                <li>Note the specific actions that led to the problem.</li>
+                <li>Take a screenshot if possible.</li>
+                <li>Note your browser and device information.</li>
+                <li>
+                  Contact us through the <a href="{% url 'website:contact' %}">Contact Form</a> with these details.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3>Still Need Help?</h3>
+        <p>Our support team is ready to assist you with any questions or issues.</p>
+        <a href="{% url 'website:contact' %}" class="btn btn-primary">Contact Support</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

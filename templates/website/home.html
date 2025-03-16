@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Critiq - Share Your Movie Experiences
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="p-5 mb-4 bg-dark text-white rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Welcome to Critiq</h1>
+            <p class="col-md-8 fs-4">Share your movie experiences and discover what others think about your favorite films.</p>
+            <a href="{% url 'critiq:movie_list' %}" class="btn btn-primary btn-lg">Browse Movies</a>
+            {% if user.is_authenticated %}
+              <a href="{% url 'critiq:user_reviews' %}" class="btn btn-outline-light btn-lg ms-2">My Reviews</a>
+            {% else %}
+              <a href="{% url 'accounts:login' %}" class="btn btn-outline-light btn-lg ms-2">Sign In to Review</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Movies Section -->
+    {% if featured_movies %}
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <h2 class="mb-4">{{ featured_section_title|default:'Featured Movies' }}</h2>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+        {% for movie in featured_movies %}
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              {% if movie.poster %}
+                <img src="{{ movie.poster.url }}" class="card-img-top" alt="{{ movie.title }}" style="height: 300px; object-fit: cover;" />
+              {% else %}
+                <div class="bg-light d-flex align-items-center justify-content-center" style="height: 300px;">
+                  <i class="bi bi-film" style="font-size: 4rem; color: #ccc;"></i>
+                </div>
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="text-muted small mb-2">{{ movie.release_year }} • {{ movie.director }}</p>
+                <p class="card-text">{{ movie.synopsis|truncatechars:100 }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    {% with avg_rating=movie.average_rating %}
+                      {% if avg_rating %}
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <span class="ms-1">{{ avg_rating|floatformat:1 }}/10</span>
+                      {% else %}
+                        <span class="text-muted">No ratings</span>
+                      {% endif %}
+                    {% endwith %}
+                  </div>
+                  <a href="{% url 'critiq:movie_detail' slug=movie.slug %}" class="btn btn-sm btn-outline-primary">See Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Recent Reviews Section -->
+    {% if recent_reviews %}
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <h2 class="mb-4">Recent Reviews</h2>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        {% for review in recent_reviews %}
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="me-3">
+                    {% if review.movie.poster %}
+                      <img src="{{ review.movie.poster.url }}" class="rounded" alt="{{ review.movie.title }}" style="width: 50px; height: 70px; object-fit: cover;" />
+                    {% else %}
+                      <div class="bg-light d-flex align-items-center justify-content-center rounded" style="width: 50px; height: 70px;">
+                        <i class="bi bi-film" style="font-size: 1.5rem; color: #ccc;"></i>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h5 class="card-title mb-0">{{ review.user.email }}</h5>
+                    <small class="text-muted">Reviewed <a href="{% url 'critiq:movie_detail' slug=review.movie.slug %}">{{ review.movie.title }}</a></small>
+                  </div>
+                  <div class="ms-auto">
+                    <span class="badge bg-primary rounded-pill"><i class="bi bi-star-fill"></i> {{ review.rating }}/10</span>
+                  </div>
+                </div>
+                <h6 class="fw-bold">"{{ review.title }}"</h6>
+                <p class="card-text">{{ review.content|truncatewords:25 }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">{{ review.created_at|date:'M d, Y' }}</small>
+                  <a href="{% url 'critiq:review_detail' slug=review.slug %}" class="btn btn-sm btn-outline-primary">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="text-center mb-5">
+        <a href="{% url 'critiq:movie_list' %}" class="btn btn-outline-primary">Explore All Movies</a>
+      </div>
+    {% else %}
+      <div class="alert alert-info">
+        <h4 class="alert-heading">No reviews yet!</h4>
+        <p>Be the first to share your thoughts on a movie.</p>
+        <hr />
+        <a href="{% url 'critiq:movie_list' %}" class="btn btn-primary">Browse Movies</a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
